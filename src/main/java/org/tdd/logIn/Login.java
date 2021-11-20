@@ -1,18 +1,30 @@
 package org.tdd.logIn;
 
+import java.util.HashMap;
+
 public class Login {
 
-    public boolean loginUser(String userName,String password){
+    public HashMap<String, User> users = new HashMap<>();
 
-         String myUserName = "hoi";
-         String myPassWord = "12345";
 
-        if (userName.equals(myUserName) && password.equals(myPassWord)){
+    public boolean loginUser(String userName, String password) {
 
-            return true;
+
+        if (users.containsKey(userName)) {
+            return users.get(userName).getPassWord().equals(password);
         }
         return false;
+    }
+
+    public void addUsers(String userName, String password) {
 
 
+        users.put(userName, new User(userName, password));
     }
 }
+
+
+
+
+
+
