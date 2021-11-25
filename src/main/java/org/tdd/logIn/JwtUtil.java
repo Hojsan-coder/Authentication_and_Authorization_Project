@@ -8,12 +8,10 @@ import com.auth0.jwt.exceptions.JWTVerificationException;
 import com.auth0.jwt.interfaces.Claim;
 import com.auth0.jwt.interfaces.DecodedJWT;
 
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
+
 
 public class JwtUtil {
-    static String  secret ="hojsan";
+    final private static String  secret ="hojsan";
 
 
     public static String generateToken(String userName){
