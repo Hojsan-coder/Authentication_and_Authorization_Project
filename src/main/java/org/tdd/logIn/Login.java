@@ -9,13 +9,14 @@ public class Login {
 
 
 
-    public boolean loginUser(String userName, String password) {
+    public String loginUser(String userName, String password) throws LoginFailExeption {
 
 
-        if (users.containsKey(userName)) {
-            return users.get(userName).getPassWord().equals(password);
+        if (users.containsKey(userName) &&  users.get(userName).getPassWord().equals(password)) {
+           return JwtUtil.generateToken(userName);
         }
-        return false;
+         throw new LoginFailExeption("failed login");
+
     }
 
     public void addUsers(String userName, String password) {
