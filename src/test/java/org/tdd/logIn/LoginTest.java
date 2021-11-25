@@ -33,4 +33,12 @@ public class LoginTest {
         assertTrue(login.loginUser("anna", "losen"));
 
     }
+
+    @Test
+    void test_hashPassWord_succes() {
+
+
+        assertTrue(PasswordUtilities.generateNewHashPassword(""));
+
+    }
 }
