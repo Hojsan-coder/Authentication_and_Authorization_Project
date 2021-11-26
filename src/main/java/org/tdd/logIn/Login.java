@@ -31,13 +31,11 @@ public class Login {
     }
 
     public void setTokenToAllUsers(){
-       users.forEach((userName,user)-> {
-           user.setToken(JwtUtil.generateToken(userName));
-       });
+       users.forEach((userName,user)-> user.setToken(JwtUtil.generateToken(userName)));
 
     }
 
-    public void uppdateUserPermissionList (){
+    public void updateUserPermissionList(){
 
         PermissionsUtils.setUsers(users);
     }

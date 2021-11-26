@@ -7,7 +7,6 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.tdd.logIn.enums.Permissions;
 import org.tdd.logIn.enums.Resource;
-import org.tdd.logIn.models.User;
 import org.tdd.logIn.utils.JwtUtil;
 import org.tdd.logIn.utils.PasswordUtilities;
 import org.tdd.logIn.utils.PermissionsUtils;
@@ -29,7 +28,7 @@ public class LoginTest {
         login.addUser("berit", "123456", Permissions.READ_EXECUTE, Permissions.WRITE);
         login.addUser("kalle", "password", Permissions.READ, Permissions.READ_WRITE);
 
-        login.uppdateUserPermissionList();
+        login.updateUserPermissionList();
 
     }
 
@@ -65,13 +64,9 @@ public class LoginTest {
     void test_user_permissions_success() {
 
         login.setTokenToAllUsers();
-        login.users.forEach((userName, user) -> {
-            assertNotNull(PermissionsUtils.getUserPermissions(user.getToken(), Resource.ACCOUNT));
-        });
+        login.users.forEach((userName, user) -> assertNotNull(PermissionsUtils.getUserPermissions(user.getToken(), Resource.ACCOUNT)));
 
-        login.users.forEach((userName, user) -> {
-            assertNotNull(PermissionsUtils.getUserPermissions(user.getToken(), Resource.PROVISION_CALC));
-        });
+        login.users.forEach((userName, user) -> assertNotNull(PermissionsUtils.getUserPermissions(user.getToken(), Resource.PROVISION_CALC)));
 
     }
 }
