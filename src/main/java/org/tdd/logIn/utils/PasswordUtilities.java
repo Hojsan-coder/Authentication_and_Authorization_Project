@@ -1,4 +1,4 @@
-package org.tdd.logIn;
+package org.tdd.logIn.utils;
 
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;

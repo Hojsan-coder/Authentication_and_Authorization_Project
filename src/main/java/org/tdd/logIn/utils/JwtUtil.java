@@ -1,4 +1,4 @@
-package org.tdd.logIn;
+package org.tdd.logIn.utils;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;

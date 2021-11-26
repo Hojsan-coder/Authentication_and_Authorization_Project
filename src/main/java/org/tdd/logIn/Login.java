@@ -1,5 +1,10 @@
 package org.tdd.logIn;
 
+import org.tdd.logIn.enums.Permissions;
+import org.tdd.logIn.models.User;
+import org.tdd.logIn.utils.JwtUtil;
+import org.tdd.logIn.utils.PermissionsUtils;
+
 import java.util.HashMap;
 
 public class Login {
@@ -19,10 +24,22 @@ public class Login {
 
     }
 
-    public void addUsers(String userName, String password) {
+    public void addUser(String userName, String password, Permissions accountPermissions ,Permissions provisionsCalcPermissions) {
 
 
-        users.put(userName, new User(userName, password));
+        users.put(userName, new User(userName, password,accountPermissions,provisionsCalcPermissions));
+    }
+
+    public void setTokenToAllUsers(){
+       users.forEach((userName,user)-> {
+           user.setToken(JwtUtil.generateToken(userName));
+       });
+
+    }
+
+    public void uppdateUserPermissionList (){
+
+        PermissionsUtils.setUsers(users);
     }
 }
 
